@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.infozimo.android"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_infozimo"
+        android:label="@string/app_name"
+        android:theme="@style/InfozimoTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".InfoActivity"
+            android:label="@string/app_name" >
+            
+        </activity>
+        <activity
+            android:name=".TagsActivity"
+            android:label="@string/title_activity_tags" >
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name" 
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        
+        <activity 
+            android:name=".PostActivity"
+            android:label="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden"
+            android:launchMode="singleTop">
+            
+        </activity>
+
+    </application>
+
+</manifest>

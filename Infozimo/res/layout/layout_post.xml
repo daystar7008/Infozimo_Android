@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    style="@style/ActivityStyle" >
+    
+    <LinearLayout 
+        android:id="@+id/layoutPostInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+        
+        <ImageView 
+	        android:id="@+id/ivUserPicPost"
+	        android:layout_width="64dp"
+	        android:layout_height="64dp"
+	        android:contentDescription="@string/user_pic"
+	        android:padding="@dimen/padding_small"/>
+	    
+	    <TextView
+	        android:id="@+id/tvUserPost"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_gravity="center_vertical"
+	        android:gravity="center_vertical"
+	        android:textColor="@android:color/black"
+	        android:textSize="16sp"
+	        android:padding="@dimen/padding_small"/>
+        
+    </LinearLayout>
+    
+    <EditText
+        android:id="@+id/etInfoDetailPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_below="@+id/layoutPostInfo"
+	    android:padding="@dimen/padding_small"
+	    android:textColor="@android:color/black"
+        android:minLines="4"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"/>
+    
+    <LinearLayout 
+        android:id="@+id/layoutSelectedTagsPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_medium"
+        android:layout_below="@+id/etInfoDetailPost">
+	    
+        <TextView 
+            android:id="@+id/tvSelectedTagLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/selectedTag"
+            android:textColor="@android:color/black"/>
+        
+        <include
+            android:id="@+id/tvSelectedTag" 
+            layout="@layout/tag_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="invisible"/>
+        
+    </LinearLayout>
+    
+    <GridView 
+        android:id="@+id/gvTagsPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:numColumns="3"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:layout_below="@+id/layoutSelectedTagsPost"
+        android:layout_above="@+id/ivImagePost">
+        
+        
+    </GridView>
+    
+    <ImageView 
+        android:id="@+id/ivImagePost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="256dp"
+        android:adjustViewBounds="true"
+		android:layout_gravity="center"
+		android:gravity="center"
+        android:layout_above="@+id/btnChoosePic"
+        android:contentDescription="@string/postImage"
+        android:visibility="gone"/>
+    
+    <Button 
+        android:id="@+id/btnChoosePic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_above="@+id/btnPost"
+        android:drawableTop="@android:drawable/ic_menu_gallery"
+        android:text="@string/choosePic"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"/>
+    
+    <Button 
+        android:id="@+id/btnPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/post"/>
+
+</RelativeLayout>

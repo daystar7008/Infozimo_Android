@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+        android:id="@+id/layoutUserInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_small"
+        android:layout_alignParentTop="true">
+        
+        <ImageView 
+	        android:id="@+id/ivUserPic"
+	        android:layout_width="64dp"
+	        android:layout_height="64dp"
+	        android:contentDescription="@string/user_pic"
+        	android:padding="@dimen/padding_small"/>
+	    
+	    <TextView 
+	        android:id="@+id/tvUser"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:textColor="@android:color/black"
+        	android:padding="@dimen/padding_small"/>
+        
+    </LinearLayout>
+    
+    <TextView 
+        android:id="@+id/tvInfoDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_below="@+id/layoutUserInfo"
+        android:padding="@dimen/padding_small"/>
+    
+    <LinearLayout 
+        android:id="@+id/layoutImageInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_small"
+	    android:layout_below="@+id/tvInfoDetail"
+	    android:visibility="gone">
+        <ImageView 
+	        android:id="@+id/ivInfoImage"
+	        android:layout_width="match_parent"
+	        android:layout_height="512dp"
+			android:layout_gravity="center"
+        	android:padding="@dimen/padding_small"
+			android:scaleType="centerInside"
+			android:gravity="center"
+	        android:contentDescription="@string/info_pic"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_small"
+        android:layout_below="@+id/layoutImageInfo">
+        
+        <ImageButton 
+            android:id="@+id/ibShareInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+        	android:padding="@dimen/padding_small"
+            android:src="@android:drawable/ic_menu_share"
+            android:contentDescription="@string/shareInfo"/>
+        
+        <ImageButton 
+            android:id="@+id/ibLikeInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+        	android:padding="@dimen/padding_small"
+            android:src="@drawable/ic_like"
+            android:contentDescription="@string/likeInfo"/>
+        
+    </LinearLayout>
+
+</RelativeLayout>

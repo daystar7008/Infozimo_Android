@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Infozimo</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_tags">Tags</string>
+    <string name="user_pic">User Pic</string>
+    <string name="info_pic">Info Pic</string>
+    <string name="info">Info</string>
+    <string name="tags">Tags</string>
+    <string name="myTags">My Tags</string>
+    <string name="shareInfo">Share Info</string>
+    <string name="likeInfo">Like Info</string>
+    <string name="post">Post</string>
+    <string name="postImage">Post Image</string>
+    <string name="choosePic">Choose Picture</string>
+    <string name="selectedTag">Selected Tag : </string>
+    <string name="facebook_app_id">140499646300107</string>
+
+</resources>
