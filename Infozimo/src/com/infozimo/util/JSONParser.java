@@ -92,6 +92,14 @@ public class JSONParser {
 		return jsonObj.toString();
 	}
 	
+	public static String parseCoverPicUrl(String json) throws JSONException{
+		JSONObject jsonObj = new JSONObject(json);
+		JSONObject jsonCoverObj = jsonObj.getJSONObject("cover");
+		String url = jsonCoverObj.getString("source");
+		
+		return url;
+	}
+	
 	public static boolean isSucceeded(String json) throws JSONException{
 		JSONObject jsonObj = new JSONObject(json);
 		int response = Integer.parseInt(jsonObj.getString("response"));

@@ -17,6 +17,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -25,6 +26,8 @@ public class HttpPostRequestTask extends AsyncTask<String, Void, String> {
 
 	private HttpClient client;
 	private HttpPost post;
+	
+	private ProgressDialog progressDialog;
 	
 	private String url;
 	private String jsonParam;
@@ -38,19 +41,24 @@ public class HttpPostRequestTask extends AsyncTask<String, Void, String> {
 		this.jsonParam = jsonParam;
 	}
 	
+	public HttpPostRequestTask(String url, String jsonParam, ProgressDialog progressDialog) {
+		this.url = url;
+		this.jsonParam = jsonParam;
+		this.progressDialog = progressDialog;
+	}
+	
+	@Override
+	protected void onPreExecute() {
+		super.onPreExecute();
+		if(progressDialog != null){
+			progressDialog.show();
+		}
+	}
+	
 	@Override
 	protected String doInBackground(String... args) {
 		client = new DefaultHttpClient();
 		post = new HttpPost(url);
-		
-		/*HttpParams params = null;
-		
-		if(jsonParam != null){
-			params = new BasicHttpParams();
-			params.setParameter("json", jsonParam);
-			
-			post.setParams(params);
-		}*/
 		
 		if(jsonParam != null){
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -90,6 +98,14 @@ public class HttpPostRequestTask extends AsyncTask<String, Void, String> {
 		}
 		
 		return result;
+	}
+	
+	@Override
+	protected void onPostExecute(String result) {
+		super.onPostExecute(result);
+		if(progressDialog != null) {
+			progressDialog.dismiss();
+		}
 	}
 	
 }

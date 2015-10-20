@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.json.JSONException;
 
+import android.app.ProgressDialog;
 import android.util.Log;
 
 import com.infozimo.beans.Info;
@@ -58,8 +59,8 @@ public class ServiceCaller {
 		}
 	}
 	
-	public String callUserIdInfoService(String userId){
-		getRequest = new HttpGetRequestTask(WebServiceURL.GET_INFO_BY_USERID.toString() + userId);
+	public String callUserIdInfoService(String userId, int startRow){
+		getRequest = new HttpGetRequestTask(WebServiceURL.GET_INFO_BY_USERID.toString() + userId + "/" + startRow);
 		
 		try {
 			String json = getRequest.execute().get();
@@ -71,8 +72,8 @@ public class ServiceCaller {
 		}
 	}
 	
-	public String callTagIdInfoService(String tagId, String userId){
-		getRequest = new HttpGetRequestTask(WebServiceURL.GET_INFO_BY_TAGID.toString() + tagId + "/" + userId);
+	public String callTagIdInfoService(String tagId, String userId, int startRow){
+		getRequest = new HttpGetRequestTask(WebServiceURL.GET_INFO_BY_TAGID.toString() + tagId + "/" + userId + "/" + startRow);
 		
 		try {
 			String json = getRequest.execute().get();
@@ -84,8 +85,8 @@ public class ServiceCaller {
 		}
 	}
 	
-	public String callUserTagInfoService(String userId){
-		getRequest = new HttpGetRequestTask(WebServiceURL.GET_INFO_BY_USER_TAG.toString() + userId);
+	public String callUserTagInfoService(String userId, int startRow, ProgressDialog progressDialog){
+		getRequest = new HttpGetRequestTask(WebServiceURL.GET_INFO_BY_USER_TAG.toString() + userId + "/" + startRow, progressDialog);
 		
 		try {
 			String json = getRequest.execute().get();
@@ -139,16 +140,14 @@ public class ServiceCaller {
 		}
 	}
 	
-	public String callAddInfoService(Info info) throws JSONException{
+	public String callAddInfoService(Info info, ProgressDialog progressDialog) throws JSONException{
 		HashMap<String, Object> values = new HashMap<String, Object>();
 		values.put(Info.USER_ID, info.getUserId());
 		values.put(Info.TAG_ID, info.getTagId());
 		values.put(Info.INFO_DETAIL, info.getInfoDetail());
-		//values.put(Info.PICTURE_BYTES, info.getPictureBytes());
 		values.put(Info.INFO_PICTURE, info.getInfoPicture());
 		
-		postRequest = new HttpPostRequestTask(WebServiceURL.ADD_INFO.toString(), JSONParser.jsonOf(info));
-		//getRequest = new HttpGetRequestTask("http://192.168.1.6/infozimo/services/test/createFile");
+		postRequest = new HttpPostRequestTask(WebServiceURL.ADD_INFO.toString(), JSONParser.jsonOf(info), progressDialog);
 		
 		try {
 			String json = postRequest.execute().get();
@@ -160,9 +159,11 @@ public class ServiceCaller {
 		}
 	}
 	
-	public String callRemoveInfoService(String infoId){
-		postRequest = new HttpPostRequestTask(WebServiceURL.REMOVE_INFO.toString() + infoId);
+	public String callRemoveInfoService(int infoId) throws JSONException{
+		HashMap<String, Object> values = new HashMap<String, Object>();
+		values.put(Constants.INFO_ID_JSON, infoId);
 		
+		postRequest = new HttpPostRequestTask(WebServiceURL.REMOVE_INFO.toString(), JSONParser.jsonOf(values));
 		try {
 			String json = postRequest.execute().get();
 			
@@ -232,6 +233,33 @@ public class ServiceCaller {
 		
 		try {
 			String json = postRequest.execute().get();
+			
+			return json;
+		} catch (Exception e) {
+			Log.e("ServiceCaller", e.getMessage());
+			return "Error";
+		}
+	}
+	
+	public String callFBCoverService(String userId, String accessToken){
+		getRequest = new HttpGetRequestTask(Constants.FB_GRAPH_URL+ "/" + userId + "?fields=cover&access_token=" + accessToken);
+		
+		try {
+			String json = getRequest.execute().get();
+			
+			return json;
+		} catch (Exception e) {
+			Log.e("ServiceCaller", e.getMessage());
+			return "Error";
+		}
+		
+	}
+	
+	public String callFBProfileService(String userId, String accessToken) {
+		getRequest = new HttpGetRequestTask(Constants.FB_GRAPH_URL+ "/" + userId + "?fields=gender,birthday&access_token=" + accessToken);
+		
+		try {
+			String json = getRequest.execute().get();
 			
 			return json;
 		} catch (Exception e) {

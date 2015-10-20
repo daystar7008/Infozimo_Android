@@ -11,6 +11,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -19,8 +20,10 @@ public class HttpGetRequestTask extends AsyncTask<String, Void, String> {
 
 	private HttpClient client;
 	private HttpGet httpGet;
-	HttpResponse response;
-	HttpEntity entity;
+	private HttpResponse response;
+	private HttpEntity entity;
+	
+	private ProgressDialog progressDialog;
 	
 	private String url;
 	
@@ -28,8 +31,22 @@ public class HttpGetRequestTask extends AsyncTask<String, Void, String> {
 		this.url = url;
 	}
 	
+	public HttpGetRequestTask(String url, ProgressDialog progressDialog) {
+		this.url = url;
+		this.progressDialog = progressDialog;
+	}
+	
+	@Override
+	protected void onPreExecute() {
+		super.onPreExecute();
+		if(progressDialog != null){
+			progressDialog.show();
+		}
+	}
+
 	@Override
 	protected String doInBackground(String... args) {
+		
 		client = new DefaultHttpClient();
 		
 		httpGet = new HttpGet(url);
@@ -56,4 +73,12 @@ public class HttpGetRequestTask extends AsyncTask<String, Void, String> {
 		return result;
 	}
 	
+	@Override
+	protected void onPostExecute(String result) {
+		super.onPostExecute(result);
+		if(progressDialog != null) {
+			progressDialog.dismiss();
+		}
+	}
+
 }

@@ -15,13 +15,14 @@ import android.widget.TextView;
 public class TagAdapter extends ArrayAdapter<Tag> {
 
 	private int resource;
-	
 	private LayoutInflater inflater;
+	private SelectType selectType;
 	
-	public TagAdapter(Context context, int resource, List<Tag> tags) {
+	public TagAdapter(Context context, int resource, List<Tag> tags, final SelectType selectType) {
 		super(context, resource, tags);
-		
+		this.resource = resource;
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		this.selectType = selectType;
 	}
 
 	@Override
@@ -34,7 +35,19 @@ public class TagAdapter extends ArrayAdapter<Tag> {
 		TextView textView = (TextView) view.findViewById(R.id.tvTagItem);
 		textView.setText(getItem(position).toString());
 		
+		if(selectType != null){
+			if(SelectType.CHECK.equals(selectType)){
+				textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.select, 0);
+			} else {
+				textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.close, 0);
+			}
+		}
+		
 		return view;
+	}
+	
+	public enum SelectType {
+		CHECK, UNCHECK;
 	}
 	
 }

@@ -2,7 +2,6 @@ package com.infozimo.webservice;
 
 public enum WebServiceURL {
 	
-	//SERVICE_URL("http://192.168.1.7/infozimo/services"),
 	GET_TAGS("/tags/"),
 	GET_TAGS_BY_NAME("/tags/findByTagName/"),
 	GET_USER_TAGS("/userTags/"),
@@ -19,7 +18,7 @@ public enum WebServiceURL {
 	UPDATE_USER("/user/update"),
 	POST_TEST("/postTest");
 
-	//private static final String SERVICE_URL = "http://192.168.1.4/infozimo/services";
+	//private static final String SERVICE_URL = "http://192.168.1.6/infozimo/services";
 	private static final String SERVICE_URL = "http://infozimo.com/application/infozimo/services";
 	
 	private final String value;

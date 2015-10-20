@@ -5,33 +5,61 @@
     android:versionName="1.0" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
 
     <application
+        android:name="com.infozimo.android.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_infozimo"
         android:label="@string/app_name"
-        android:theme="@style/InfozimoTheme">
+        android:theme="@android:style/Theme.Holo.Light">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".InfoActivity"
-            android:label="@string/app_name" >
+            android:name=".InfoFragment"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             
         </activity>
         <activity
-            android:name=".TagsActivity"
-            android:label="@string/title_activity_tags" >
+            android:name=".TagsFragment"
+            android:label="@string/title_activity_tags"
+            android:screenOrientation="portrait" >
+            
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name" 
-            android:launchMode="singleTop">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait" />
+        
+        <activity 
+            android:name=".PostFragment"
+            android:label="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait" >
+            
+        </activity>
+        
+        <activity 
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,20 +67,21 @@
             </intent-filter>
             
         </activity>
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        
-        <activity 
-            android:name=".PostActivity"
-            android:label="@string/app_name"
-            android:configChanges="keyboard|keyboardHidden"
-            android:launchMode="singleTop">
-            
-        </activity>
 
+        <!-- StartApp related Activities - STARTS -->
+        <activity
+            android:name="com.startapp.android.publish.list3d.List3DActivity"
+            android:theme="@android:style/Theme" />
+        <activity
+            android:name="com.startapp.android.publish.OverlayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.startapp.android.publish.FullScreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme" />
+        <!-- StartApp related Activities - ENDS -->
+        
     </application>
 
 </manifest>
