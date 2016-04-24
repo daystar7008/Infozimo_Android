@@ -16,10 +16,13 @@ public enum WebServiceURL {
 	REMOVE_LIKE("/like/remove"),
 	GET_USER("/user/"),
 	UPDATE_USER("/user/update"),
-	POST_TEST("/postTest");
+	POST_TEST("/postTest"),
+	GET_POINTS("/points/"),
+	UPDATE_POINTS("/points/add"),
+	REDEEM_POINTS("/points/redeem");
 
-	//private static final String SERVICE_URL = "http://192.168.1.6/infozimo/services";
-	private static final String SERVICE_URL = "http://infozimo.com/application/infozimo/services";
+	private static final String SERVICE_URL = "http://192.168.1.2/infozimo/services";
+	//private static final String SERVICE_URL = "http://infozimo.com/application/infozimo/services";
 	
 	private final String value;
 	private WebServiceURL(String value){

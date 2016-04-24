@@ -241,6 +241,56 @@ public class ServiceCaller {
 		}
 	}
 	
+	public String callGetPointsService(String userId) throws JSONException {
+		HashMap<String, Object> values = new HashMap<String, Object>();
+		values.put(User.USER_ID, userId);
+		
+		getRequest = new HttpGetRequestTask(WebServiceURL.GET_POINTS.toString() + userId);
+		
+		try {
+			String json = getRequest.execute().get();
+			
+			return json;
+		} catch (Exception e) {
+			Log.e("ServiceCaller", e.getMessage());
+			return "Error";
+		}
+	}
+	
+	public String callUpdatePointsService(String userId, String pointCategory) throws JSONException {
+		HashMap<String, Object> values = new HashMap<String, Object>();
+		values.put(User.USER_ID, userId);
+		values.put("point_category", pointCategory);
+		
+		postRequest = new HttpPostRequestTask(WebServiceURL.UPDATE_POINTS.toString(), JSONParser.jsonOf(values));
+		
+		try {
+			String json = postRequest.execute().get();
+			
+			return json;
+		} catch (Exception e) {
+			Log.e("ServiceCaller", e.getMessage());
+			return "Error";
+		}
+	}
+	
+	public String callRedeemPointsService(String userId, String contact) throws JSONException {
+		HashMap<String, Object> values = new HashMap<String, Object>();
+		values.put(User.USER_ID, userId);
+		values.put("new_contact", contact);
+		
+		postRequest = new HttpPostRequestTask(WebServiceURL.REDEEM_POINTS.toString(), JSONParser.jsonOf(values));
+		
+		try {
+			String json = postRequest.execute().get();
+			
+			return json;
+		} catch (Exception e) {
+			Log.e("ServiceCaller", e.getMessage());
+			return "Error";
+		}
+	}
+	
 	public String callFBCoverService(String userId, String accessToken){
 		getRequest = new HttpGetRequestTask(Constants.FB_GRAPH_URL+ "/" + userId + "?fields=cover&access_token=" + accessToken);
 		

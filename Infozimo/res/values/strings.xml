@@ -22,6 +22,16 @@
     <string name="deleteInfo">Delete Info</string>
     <string name="facebook_app_id">140499646300107</string>
     
+    <string name="howToCash">This Application compiles complex algorithm that verifies how you use infozimo and how long you use it. \n
+        - Viewing 3 posts will give you 1 Point \n
+        - Posting 1 info. will give you 4 Points \n
+        Once you got 1000 Points, You are all set to Redeem your points. \n
+        Redeemed Points will be given to you as PayTM Cash. \n
+        Note: Points and PayTM cash are totally Different. \n
+        For Example: You may Redeem 1350 Points and get Rs.450 or even Rs.37 \n
+        It Totally Depends on the algorithm works behind the application. \n
+        Try to click on Ads to get Solid Points that surely counts on Cash</string>
+    
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
      
@@ -32,6 +42,7 @@
         <item >Tags</item>
         <item >Post</item>
         <item >More Apps From Developer</item>
+        <item >How Can I get PayTM Cash</item>
         <item >Logout</item>
         <!-- <item >What\'s Hot</item> -->
     </string-array>
@@ -44,6 +55,7 @@
         <item>@drawable/ic_tag</item>
         <item>@drawable/ic_post</item>
         <item>@drawable/ic_more</item>
+        <item>@drawable/ic_coin</item>
         <item>@drawable/ic_logout</item>
         <!-- <item>@drawable/ic_whats_hot</item> -->
     </array>

@@ -98,7 +98,7 @@ public class InfoAdapter extends ArrayAdapter<Info> {
 		
         View mView = v;
         
-        if(position == 7) {
+        if(position == 7 || position == 35) {
         	startAppAd.showAd();
 			startAppAd.loadAd();
         }
