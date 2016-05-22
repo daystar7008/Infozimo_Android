@@ -21,8 +21,8 @@ public enum WebServiceURL {
 	UPDATE_POINTS("/points/add"),
 	REDEEM_POINTS("/points/redeem");
 
-	private static final String SERVICE_URL = "http://192.168.1.2/infozimo/services";
-	//private static final String SERVICE_URL = "http://infozimo.com/application/infozimo/services";
+	//private static final String SERVICE_URL = "http://192.168.1.2/infozimo/services";
+	private static final String SERVICE_URL = "http://infozimo.com/application/infozimo/services";
 	
 	private final String value;
 	private WebServiceURL(String value){

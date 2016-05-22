@@ -199,7 +199,7 @@ public class MainActivity extends Activity {
 				public void onClick(View view) {
 					View parentView = (View) view.getTag();
 					Object points = parentView.getTag();
-					if(points != null && Integer.parseInt(points.toString()) >= 10) {
+					if(points != null && Integer.parseInt(points.toString()) >= 1000) {
 						
 						parentView.findViewById(R.id.tvContact).setVisibility(View.VISIBLE);
 						
