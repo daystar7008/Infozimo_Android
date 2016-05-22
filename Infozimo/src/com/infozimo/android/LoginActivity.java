@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
@@ -115,6 +116,7 @@ public class LoginActivity extends Activity {
 	        @Override
 	        public void onError(FacebookException exception) {
 	        	Toast.makeText(LoginActivity.this, "Couldn't Connect To Facebook", Toast.LENGTH_LONG).show();
+	        	Log.e("LoginActivity", exception.getMessage());
 	        }
 	    });
         
